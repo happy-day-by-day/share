@@ -7,7 +7,7 @@ $.barkKey = ($.isNode() ? process.env["bark_key"] : $.getdata("bark_key")) || ""
 async function getCookie() {
     if ($request && $request.method != "OPTIONS") {
         try {
-            console.log($request)
+            $.log($request)
         } catch (e) {
             $.msg($.name, "❌", e);
         }
@@ -17,8 +17,9 @@ async function getCookie() {
 //主程序执行入口
 !(async () => {
     //没有设置变量,执行Cookie获取
+    
     if (typeof $request != "undefined") {
-        await getCookie();
+        //await getCookie();
         return;
     }
 })()
@@ -26,7 +27,6 @@ async function getCookie() {
     .finally(() => {
         $.done(); //调用Surge、QX内部特有的函数, 用于退出脚本执行
     });
-
 /** ---------------------------------固定不动区域----------------------------------------- */
 // prettier-ignore
 //请求函数函数二次封装
